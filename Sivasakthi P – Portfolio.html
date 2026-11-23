@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sivasakthi P – Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f3ff; --surface:#ffffff; --ink:#1a1535; --muted:#5d5878; --line:#ddd6f5;
+  --c1:#6c4cff; --c2:#ff5a6e; --c3:#ffc933; --c4:#18c29c; --c5:#2f9bff;
+  --t1:#e7e1ff; --t2:#ffe1e5; --t3:#fff1c2; --t4:#cdf5ea; --t5:#d6eaff;
+  --on1:#ffffff; color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#110f27; --surface:#1b1840; --ink:#f0edff; --muted:#aaa5cc; --line:#322e63;
+    --c1:#9a84ff; --c2:#ff7d8d; --c3:#ffd75e; --c4:#3fdcb6; --c5:#5eb2ff;
+    --t1:#2a2468; --t2:#4a2233; --t3:#4a3d12; --t4:#12453b; --t5:#15385f; --on1:#110f27; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#110f27; --surface:#1b1840; --ink:#f0edff; --muted:#aaa5cc; --line:#322e63;
+  --c1:#9a84ff; --c2:#ff7d8d; --c3:#ffd75e; --c4:#3fdcb6; --c5:#5eb2ff;
+  --t1:#2a2468; --t2:#4a2233; --t3:#4a3d12; --t4:#12453b; --t5:#15385f; --on1:#110f27; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--c1);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--c5);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem);position:relative}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+.rainbow{background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c5));height:6px}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;gap:1rem;flex-wrap:wrap}
+nav .brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.2rem;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:.5rem}
+nav .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;display:grid;place-items:center;font-size:1rem}
+nav ul{display:flex;gap:1.1rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;align-items:center}
+nav ul a{color:var(--muted);text-decoration:none;font-weight:600}
+nav ul a:hover{color:var(--c1)}
+#theme{font:inherit;cursor:pointer;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:.25rem .8rem;font-weight:600}
+
+.hero{position:relative;padding:clamp(2.5rem,7vw,5rem) 0 clamp(2rem,5vw,3rem)}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);z-index:0;pointer-events:none;animation:float 9s ease-in-out infinite}
+.b1{width:260px;height:260px;background:var(--c3);right:-40px;top:10px;opacity:.85}
+.b2{width:150px;height:150px;background:var(--c2);right:170px;top:210px;animation-delay:-3s;opacity:.9}
+.b3{width:110px;height:110px;background:var(--c4);right:40px;top:300px;animation-delay:-6s}
+.b4{width:70px;height:70px;background:var(--c5);right:300px;top:60px;animation-delay:-4s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+.hero>*{position:relative;z-index:1}
+.hi{display:inline-block;background:var(--t3);border:2px solid var(--ink);padding:.25rem .9rem;border-radius:99px;font-weight:600;margin-bottom:1.1rem}
+.hero h1{font-size:clamp(3.2rem,11vw,8rem);font-weight:800;background:linear-gradient(95deg,var(--c1) 10%,var(--c2) 55%,var(--c3) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.role{font-size:clamp(1.25rem,3vw,1.8rem);font-family:"Bricolage Grotesque",sans-serif;font-weight:600;margin:1rem 0 .4rem;min-height:1.3em}
+.role span{border-right:3px solid var(--c2);padding-right:4px}
+.sub{color:var(--muted);max-width:46ch;margin:0}
+.cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem}
+.btn{display:inline-block;padding:.7rem 1.2rem;border-radius:12px;border:2px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:600;background:var(--surface);box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn.p{background:var(--c1);color:var(--on1)}
+.btn.s{background:var(--c3);color:#1a1535}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1rem 0 0}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:1.1rem 1.2rem;border-radius:18px;border:2px solid var(--ink)}
+.stat b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:2.4rem;line-height:1;color:var(--ink)}
+.stat span{font-weight:500;color:var(--ink)}
+.stat:nth-child(1){background:var(--t1)}.stat:nth-child(2){background:var(--t2)}.stat:nth-child(3){background:var(--t4)}.stat:nth-child(4){background:var(--t3)}
+
+.finder{margin-top:2.5rem;background:var(--surface);border:2px solid var(--ink);border-radius:18px;padding:1.1rem 1.2rem 1.2rem;max-width:720px;box-shadow:6px 6px 0 var(--c5)}
+.finder label{display:block;font-weight:600;margin-bottom:.5rem}
+.finder input{width:100%;font:inherit;font-size:1.15rem;padding:.7rem .9rem;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.chips button{font:inherit;font-size:.95rem;font-weight:500;cursor:pointer;border:0;color:var(--ink);padding:.3rem .85rem;border-radius:99px}
+.chips button:nth-child(1){background:var(--t1)}.chips button:nth-child(2){background:var(--t2)}.chips button:nth-child(3){background:var(--t3)}.chips button:nth-child(4){background:var(--t4)}.chips button:nth-child(5){background:var(--t5)}.chips button:nth-child(6){background:var(--t1)}
+#results{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.5rem}
+#results li{padding:.65rem .85rem;border-left:5px solid var(--c2);background:var(--bg);border-radius:0 10px 10px 0}
+#results li:nth-child(5n+2){border-color:var(--c4)}#results li:nth-child(5n+3){border-color:var(--c3)}#results li:nth-child(5n+4){border-color:var(--c5)}#results li:nth-child(5n+5){border-color:var(--c1)}
+#results .t{font-weight:600}#results .k{color:var(--muted);font-size:.95rem}
+#results a{text-decoration:none;color:inherit;display:block}
+mark{background:var(--c3);color:#1a1535;border-radius:3px;padding:0 2px}
+.hint{color:var(--muted);font-size:.95rem;margin:.9rem 0 0}
+
+section{padding:clamp(2.5rem,6vw,4.2rem) 0}
+.sec-title{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:1.6rem;display:flex;align-items:center;gap:.8rem}
+.sec-title::before{content:"";width:16px;height:44px;border-radius:8px;background:var(--bar,var(--c1))}
+#about{--bar:var(--c2)}#projects{--bar:var(--c1)}#skills{--bar:var(--c4)}#experience{--bar:var(--c3)}#education{--bar:var(--c5)}#interests{--bar:var(--c2)}
+.prose{max-width:68ch;font-size:1.12rem}
+.prose p{margin:0 0 1rem}
+
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+@media(max-width:860px){.projects{grid-template-columns:1fr}}
+.project{background:var(--surface);border:2px solid var(--ink);border-radius:22px;overflow:hidden;box-shadow:7px 7px 0 var(--sh)}
+.project header{padding:1.4rem 1.4rem 1.2rem;background:var(--bgc);border-bottom:2px solid var(--ink);color:#1a1535}
+.project h3{font-size:clamp(1.35rem,2.5vw,1.7rem)}
+.project .body{padding:1.2rem 1.4rem 1.5rem}
+.project ul.pts{margin:0;padding-left:1.1rem}
+.project ul.pts li{margin-bottom:.55rem}
+.project.a{--bgc:var(--c3);--sh:var(--c1)}
+.project.b{--bgc:var(--c4);--sh:var(--c2)}
+:root[data-theme="dark"] .project header,:root:not([data-theme="light"]) .project header{color:#1a1535}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.9rem 0 0;padding:0;list-style:none}
+.tags li{background:rgba(255,255,255,.75);color:#1a1535;font-weight:600;font-size:.85rem;padding:.15rem .65rem;border-radius:99px;border:1.5px solid #1a1535}
+
+.skillgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem}
+.skill{border-radius:18px;padding:1.1rem 1.2rem;border:2px solid var(--ink);background:var(--tt)}
+.skill h3{font-size:1.2rem;margin-bottom:.7rem;color:var(--ink)}
+.skill ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+.skill li{background:var(--surface);color:var(--ink);font-weight:500;border-radius:99px;padding:.15rem .7rem;font-size:.95rem;border:1.5px solid var(--ink)}
+.skill:nth-child(1){--tt:var(--t1)}.skill:nth-child(2){--tt:var(--t5)}.skill:nth-child(3){--tt:var(--t4)}.skill:nth-child(4){--tt:var(--t3)}.skill:nth-child(5){--tt:var(--t2)}.skill:nth-child(6){--tt:var(--t1)}
+.learn{margin-top:1.3rem;padding:.9rem 1.1rem;border-radius:14px;background:var(--c2);color:#fff;font-weight:600;display:inline-block}
+:root[data-theme="dark"] .learn,:root:not([data-theme="light"]) .learn{color:#1a1535}
+@media(prefers-color-scheme:light){.learn{color:#fff}}
+
+.timeline{position:relative;margin:0;padding:0 0 0 2rem;list-style:none;border-left:4px solid var(--line)}
+.timeline li{position:relative;margin-bottom:1.6rem;background:var(--surface);border:2px solid var(--ink);border-radius:16px;padding:1rem 1.2rem}
+.timeline li::before{content:"";position:absolute;left:calc(-2rem - 12px);top:1.2rem;width:20px;height:20px;border-radius:50%;background:var(--dot);border:3px solid var(--bg)}
+.timeline li:nth-child(1){--dot:var(--c3)}.timeline li:nth-child(2){--dot:var(--c2)}.timeline li:nth-child(3){--dot:var(--c5)}
+.timeline h3{font-size:1.3rem;margin-bottom:.25rem}
+.timeline p{margin:0;color:var(--muted)}
+.pill{display:inline-block;background:var(--t4);color:var(--ink);border-radius:99px;padding:.05rem .65rem;font-size:.85rem;font-weight:600;margin-right:.3rem}
+.edu-row{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
+.cgpa{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:3.4rem;line-height:1;color:var(--c1)}
+.langs{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.langs span{padding:.25rem .9rem;border-radius:99px;font-weight:600;color:var(--ink)}
+.langs span:nth-child(1){background:var(--t2)}.langs span:nth-child(2){background:var(--t5)}.langs span:nth-child(3){background:var(--t3)}
+
+.ints{display:flex;flex-wrap:wrap;gap:.6rem;margin:0;padding:0;list-style:none}
+.ints li{padding:.4rem 1rem;border-radius:99px;font-weight:600;border:2px solid var(--ink);color:var(--ink)}
+.ints li:nth-child(5n+1){background:var(--t1)}.ints li:nth-child(5n+2){background:var(--t2)}.ints li:nth-child(5n+3){background:var(--t3)}.ints li:nth-child(5n+4){background:var(--t4)}.ints li:nth-child(5n+5){background:var(--t5)}
+
+.contact-box{background:linear-gradient(120deg,var(--c1),var(--c2) 60%,var(--c3));border:2px solid var(--ink);border-radius:28px;padding:clamp(1.6rem,5vw,3rem);color:#fff}
+.contact-box h2{font-size:clamp(2rem,5vw,3.4rem);margin-bottom:.8rem;color:#fff}
+.contact-box a.mail{color:#fff;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(1.2rem,3.6vw,2rem);word-break:break-word}
+.contact-box p{margin:.7rem 0 0;font-weight:500}
+.contact-box .btn{color:#1a1535;background:#fff;border-color:#1a1535;box-shadow:4px 4px 0 #1a1535}
+.contact-box .btn.y{background:var(--c3)}
+.contact-box .cta{margin-top:1.4rem}
+:root[data-theme="dark"] .contact-box,:root[data-theme="dark"] .contact-box h2,:root[data-theme="dark"] .contact-box a.mail{color:#1a1535}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .contact-box,:root:not([data-theme="light"]) .contact-box h2,:root:not([data-theme="light"]) .contact-box a.mail{color:#1a1535}}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.95rem;text-align:center}
+@media(prefers-reduced-motion:reduce){.blob{animation:none}html{scroll-behavior:auto}.btn{transition:none}}
+@media(max-width:700px){.b1{width:150px;height:150px;right:-50px}.b2,.b3,.b4{display:none}}
+</style>
+</head>
+<body>
+<div class="rainbow"></div>
+<div class="wrap">
+  <nav aria-label="Main">
+    <a class="brand" href="#top"><span class="logo" aria-hidden="true">S</span>Sivasakthi P</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Internships</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button id="theme" type="button" aria-label="Switch light or dark theme">Theme</button></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+    <span class="hi">Hi, I’m</span>
+    <h1>Sivasakthi P</h1>
+    <p class="role"><span id="typed">Full Stack Developer</span></p>
+    <p class="sub">Third-year B.Tech IT student at SRM Institute of Science and Technology. I build responsive web apps with React, Python, Flask and MySQL.</p>
+    <div class="cta">
+      <a class="btn p" href="#projects">See my projects</a>
+      <a class="btn s" href="#contact">Get in touch</a>
+      <a class="btn" href="https://github.com/sivasakthipetchi6606" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <div class="stats" style="margin-top:2.5rem">
+      <div class="stat"><b>8.33</b><span>CGPA</span></div>
+      <div class="stat"><b>2</b><span>Full-stack projects</span></div>
+      <div class="stat"><b>2</b><span>Virtual internships</span></div>
+      <div class="stat"><b>3</b><span>Languages spoken</span></div>
+    </div>
+
+    <div class="finder">
+      <label for="q">Search my work by prefix</label>
+      <input id="q" type="search" autocomplete="off" placeholder="Try “fla”, “rea” or “tri”">
+      <div class="chips" id="chips" aria-label="Quick searches"></div>
+      <p class="hint" id="hint">Type the start of a skill, tool or project name. It works the way my music project indexes songs.</p>
+      <ul id="results" aria-live="polite"></ul>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2 class="sec-title">About me</h2>
+    <div class="prose">
+      <p>I’m a motivated developer with hands-on full-stack experience from academic projects and virtual internships. I’m interested in software development, web technologies and artificial intelligence.</p>
+      <p>I enjoy building responsive apps, solving real-world problems and turning ideas into working software. I’m always sharpening my technical and problem-solving skills.</p>
+      <p>My goal is to become a skilled Full Stack Developer who builds user-friendly applications and grows through industry experience.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="sec-title">Projects</h2>
+    <div class="projects">
+      <article class="project a" id="p-music">
+        <header>
+          <h3>Intelligent Music Search &amp; Recommendation System</h3>
+          <ul class="tags"><li>Python</li><li>Flask</li><li>Trie</li><li>Bloom Filter</li><li>NLP</li><li>JSON</li></ul>
+        </header>
+        <div class="body"><ul class="pts">
+          <li>Flask music search platform with prefix search, fuzzy matching, spell correction and NLP-based query processing.</li>
+          <li>Trie and Bloom Filter for fast song indexing, searching and duplicate detection.</li>
+          <li>Ranking based on word overlap, prefix matching, song popularity and title similarity.</li>
+          <li>User authentication, personalized playlists, play-count tracking and co-play recommendations.</li>
+        </ul></div>
+      </article>
+      <article class="project b" id="p-college">
+        <header>
+          <h3>College Dashboard: Search &amp; Comparison Platform</h3>
+          <ul class="tags"><li>Python</li><li>Flask</li><li>MySQL</li><li>REST API</li></ul>
+        </header>
+        <div class="body"><ul class="pts">
+          <li>Flask platform backed by MySQL to manage structured college, course and review data.</li>
+          <li>Search by college name, location, type, counselling code and course names using SQL queries.</li>
+          <li>APIs for college comparison, course retrieval, reviews and full CRUD on college records.</li>
+          <li>Relational tables for colleges, courses and college-course mappings.</li>
+        </ul></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="sec-title">Skills</h2>
+    <div class="skillgrid">
+      <div class="skill"><h3>Languages</h3><ul><li>C++</li><li>Python</li><li>Java (learning)</li></ul></div>
+      <div class="skill"><h3>Web</h3><ul><li>HTML</li><li>CSS</li><li>React</li></ul></div>
+      <div class="skill"><h3>Backend</h3><ul><li>Python</li><li>Flask</li><li>REST APIs</li></ul></div>
+      <div class="skill"><h3>Database</h3><ul><li>MySQL</li></ul></div>
+      <div class="skill"><h3>Data structures</h3><ul><li>Trie</li><li>Bloom Filter</li><li>DSA</li></ul></div>
+      <div class="skill"><h3>Soft skills</h3><ul><li>Teamwork</li><li>Communication</li><li>Problem-solving</li><li>Time management</li><li>Adaptability</li></ul></div>
+    </div>
+    <p class="learn">Learning now: advanced React concepts and Java</p>
+  </section>
+
+  <section id="experience">
+    <h2 class="sec-title">Internships</h2>
+    <ul class="timeline">
+      <li><h3>AI/ML Virtual Internship</h3><p><span class="pill">Recent</span> Eduskill · Virtual</p></li>
+      <li><h3>Java Full Stack Development Virtual Internship</h3><p><span class="pill">Recent</span> Eduskill · Virtual</p></li>
+    </ul>
+  </section>
+
+  <section id="education">
+    <h2 class="sec-title">Education</h2>
+    <div class="edu-row">
+      <div class="cgpa">8.33<small style="font-size:1rem;color:var(--muted);font-family:'Instrument Sans',sans-serif;font-weight:600"> CGPA</small></div>
+      <div>
+        <h3 style="font-size:1.4rem">SRM Institute of Science and Technology</h3>
+        <p style="margin:.3rem 0 0;color:var(--muted)">B.Tech, Information Technology · Third year · Expected graduation 2028 · Tamil Nadu, India</p>
+      </div>
+    </div>
+    <div class="langs"><span>Tamil: native</span><span>English: fluent</span><span>Hindi: read and write</span></div>
+  </section>
+
+  <section id="interests">
+    <h2 class="sec-title">Interests</h2>
+    <ul class="ints">
+      <li>Full stack web development</li><li>Software engineering</li><li>AI and machine learning</li><li>Frontend and backend</li><li>Database management</li><li>Data structures and algorithms</li><li>Application development</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <div class="contact-box">
+      <h2>Let’s build something.</h2>
+      <a class="mail" href="mailto:ssivasakthi6606@gmail.com">ssivasakthi6606@gmail.com</a>
+      <p>+91 9385827606 · Tirunelveli, Tamil Nadu, India</p>
+      <div class="cta">
+        <a class="btn" href="https://github.com/sivasakthipetchi6606" target="_blank" rel="noopener">GitHub profile</a>
+        <a class="btn y" href="https://github.com/sivasakthipetchi6606/sivasakthi-portfolio" target="_blank" rel="noopener">Portfolio repository</a>
+        <a class="btn" href="mailto:ssivasakthi6606@gmail.com">Send an email</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Sivasakthi P</footer>
+</div>
+
+<script>
+(function(){
+  var INDEX=[
+    {t:"Intelligent Music Search & Recommendation System",k:"Project · Python, Flask, Trie, Bloom Filter, NLP",w:["music","intelligent","search","recommendation","python","flask","trie","bloom","filter","nlp","json","playlist","fuzzy","spell"],h:"#p-music"},
+    {t:"College Dashboard",k:"Project · Python, Flask, MySQL, REST API",w:["college","dashboard","comparison","python","flask","mysql","rest","api","crud","sql"],h:"#p-college"},
+    {t:"React",k:"Skill · Web",w:["react","frontend","advanced"],h:"#skills"},
+    {t:"Python",k:"Skill · Language and backend",w:["python"],h:"#skills"},
+    {t:"Flask",k:"Skill · Backend framework",w:["flask","backend"],h:"#skills"},
+    {t:"MySQL",k:"Skill · Database",w:["mysql","sql","database"],h:"#skills"},
+    {t:"C++",k:"Skill · Language",w:["c++","cpp"],h:"#skills"},
+    {t:"Java",k:"Skill · Learning now",w:["java","learning"],h:"#skills"},
+    {t:"Trie and Bloom Filter",k:"Skill · Data structures",w:["trie","bloom","filter","data","structures","algorithms","dsa"],h:"#skills"},
+    {t:"HTML and CSS",k:"Skill · Web",w:["html","css","web"],h:"#skills"},
+    {t:"REST APIs",k:"Skill · Backend",w:["rest","api","apis"],h:"#skills"},
+    {t:"AI/ML Virtual Internship",k:"Internship · Eduskill",w:["ai","ml","artificial","machine","learning","internship","eduskill","virtual"],h:"#experience"},
+    {t:"Java Full Stack Development Virtual Internship",k:"Internship · Eduskill",w:["java","full","stack","development","internship","eduskill","virtual"],h:"#experience"},
+    {t:"SRM Institute of Science and Technology",k:"Education · B.Tech IT, CGPA 8.33",w:["srm","institute","education","btech","information","technology","cgpa"],h:"#education"}
+  ];
+  var q=document.getElementById("q"),res=document.getElementById("results"),hint=document.getElementById("hint"),chips=document.getElementById("chips");
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function mark(text,p){
+    var re=new RegExp("(^|[^a-z0-9+])("+p.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","gi"),m,last=0,html="";
+    while((m=re.exec(text))){var s=m.index+m[1].length;html+=esc(text.slice(last,s))+"<mark>"+esc(m[2])+"</mark>";last=s+m[2].length}
+    return html+esc(text.slice(last));
+  }
+  function run(){
+    var p=q.value.trim().toLowerCase();
+    res.innerHTML="";
+    if(!p){hint.textContent="Type the start of a skill, tool or project name. It works the way my music project indexes songs.";return}
+    var hits=INDEX.filter(function(it){return it.w.some(function(w){return w.indexOf(p)===0})||it.t.toLowerCase().split(/\s+/).some(function(w){return w.indexOf(p)===0})});
+    hint.textContent=hits.length?hits.length+(hits.length===1?" match":" matches")+" for “"+q.value.trim()+"”":"No matches. Try a shorter prefix such as “fl” or “re”.";
+    hits.forEach(function(it){
+      var li=document.createElement("li");
+      li.innerHTML='<a href="'+it.h+'"><div class="t">'+mark(it.t,p)+'</div><div class="k">'+esc(it.k)+'</div></a>';
+      res.appendChild(li);
+    });
+  }
+  ["React","Flask","Trie","MySQL","Python","Java"].forEach(function(c){
+    var b=document.createElement("button");b.type="button";b.textContent=c;
+    b.addEventListener("click",function(){q.value=c.toLowerCase().slice(0,3);q.focus();run()});
+    chips.appendChild(b);
+  });
+  q.addEventListener("input",run);
+
+  // rotating role line
+  var roles=["Full Stack Developer","AI/ML enthusiast","Problem solver","React and Flask builder"],ri=0,ci=roles[0].length,del=true,el=document.getElementById("typed");
+  if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+    (function tick(){
+      var w=roles[ri];
+      if(del){ci--;if(ci<=0){del=false;ri=(ri+1)%roles.length}}
+      else{ci++;if(ci>=roles[ri].length)del=true}
+      el.textContent=roles[ri].slice(0,Math.max(ci,0))||"\u00a0";
+      setTimeout(tick,del&&ci>=roles[ri].length-1?1400:(del?35:70));
+    })();
+  }
+
+  // theme toggle
+  var root=document.documentElement,tb=document.getElementById("theme");
+  tb.addEventListener("click",function(){
+    var dark=root.getAttribute("data-theme")==="dark"||(!root.getAttribute("data-theme")&&window.matchMedia("(prefers-color-scheme: dark)").matches);
+    root.setAttribute("data-theme",dark?"light":"dark");
+  });
+})();
+</script>
+</body>
+</html>
